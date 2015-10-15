@@ -1,0 +1,45 @@
+<h1><%= "#{@user.name}'s Page" %></h1>
+
+<a href="/items/new">List a new item</a>
+
+<% if @user.listed_items.empty? %>
+  <h2>You have no items listed</h2>
+<% else %>
+  <h2>Your Listed Items</h2>
+  <ul class="itemlist">
+  <% @user.listed_items.each do |item| %>
+    <li><a href="<%="/items/#{item.id}" %>"><%= item.name %></a>
+    <% if item.seller == current_user %>
+    | <a href="<%="/items/#{item.id}/edit" %>">Edit</a>
+    | <form id="delete-item" action="<%= "/items/#{item.id}" %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+    <% end %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<% if @user.bid_on_items.empty? %>
+  <h2>You have no bid on items</h2>
+<% else %>
+  <h2>Your Bid on Items</h2>
+  <ul class="itemlist">
+  <% @user.bid_on_items.each do |item| %>
+    <li><a href="<%="/items/#{item.id}" %>"><%= item.name %></a></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+<% if @user.won_items.empty? %>
+  <h2>You have no won items</h2>
+<% else %>
+  <h2>Your Won on Items</h2>
+  <ul class="itemlist">
+  <% @user.won_items.each do |item| %>
+    <li><a href="<%="/items/#{item.id}" %>"><%= item.name %></a></li>
+  <% end %>
+  </ul>
+<% end %>

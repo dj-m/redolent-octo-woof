@@ -1,0 +1,17 @@
+label, input, textarea {
+  display: block
+}
+#delete-item {
+    display: inline;
+}
+#delete-item input {
+    border: none;
+    display: inline;
+    background: transparent;
+    color: blue;
+    text-decoration: underline;
+}
+body {
+    margin: 20px;
+    font-family: Montserrat;
+}

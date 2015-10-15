@@ -1,0 +1,8 @@
+<form id="register" action="/users" method="post">
+    <fieldset>
+        <legend>Choose a username and password.</legend>
+        <%= erb :_errors, layout: false, locals: {error_messages: @errors} %>
+        <%= erb :"users/_userinfo", layout: false, locals: {user: @user} %>
+    </fieldset>
+    <input type="submit" value="Register">
+</form>

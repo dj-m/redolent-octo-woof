@@ -1,0 +1,8 @@
+<form id="login" action="/users/login" method="post">
+    <fieldset>
+        <legend>Please Login</legend>
+        <%= erb :_errors, layout: false, locals: {error_messages: @errors} %>
+        <%= erb :"users/_userinfo", layout: false, locals: {user: @user} %>
+    </fieldset>
+    <input type="submit" value="Login">
+</form>

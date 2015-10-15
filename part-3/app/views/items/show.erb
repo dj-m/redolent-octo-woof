@@ -1,0 +1,20 @@
+<article>
+<h2><%= @item.name %><h2>
+<p><%= @item.description %></p>
+</article>
+<div class="bid-zone">
+<p><%= "Bidding started: #{@item.start_time}"%></p>
+<p><%= "Bidding ends: #{@item.end_time}"%></p>
+<p><%= "Number of bidders: #{@item.bids.size}"%></p>
+<% if !logged_in? %>
+    <p>"To place a bid please <a href="/users/login">login</a> or <a href="/users/new">register</a>."</p>    
+<% elsif current_user.has_bid_on(@item) %>
+    <p>"Thank you for your bid. Good luck!"</p>
+<% else %>
+    <form action="<%= "/items/#{@item.id}/bids" %>" method="post">
+        <%= erb :_errors, layout: false, locals: {error_messages: @errors} %>
+        <input name="amount" type="number">
+        <input type="Submit" value="Place Bid">
+    </form>
+<% end %>
+</div>

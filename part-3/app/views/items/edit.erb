@@ -1,0 +1,9 @@
+<form id="edit-item" action="/items/<%= @item.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <fieldset>
+        <legend>Edit your item</legend>
+        <%= erb :_errors, layout: false, locals: {error_messages: @errors} %>
+        <%= erb :"items/_iteminfo", layout: false, locals: {item: @item} %>
+    </fieldset>
+    <input type="submit" value="Update!">
+</form>
